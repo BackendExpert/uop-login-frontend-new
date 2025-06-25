@@ -53,6 +53,8 @@ import ResearchHighlights from "./pages/ResearchHighlights/ResearchHighlights";
 import CreateResearchStats from "./pages/ResearchHighlights/CreateResearchStats";
 import WorkshopsSc from "./pages/WorkshopsSc/WorkshopsSc";
 import CreateWorkshops from "./pages/WorkshopsSc/CreateWorkshops";
+import Publication from "./pages/Publications/Publication";
+import CreateReports from "./pages/Publications/CreateReports";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -149,6 +151,8 @@ export default function App() {
             <Route path="ViewVacancy/:id" element={<ViewVacancy /> } />
             <Route path="ResearchHighlights" element={<ResearchHighlights /> } /> 
             <Route path="CreateResearchStats" element={<CreateResearchStats /> } />
+            <Route path="Publication" element={<Publication /> } />
+            <Route path="CreateReports" element={<CreateReports /> } />
 
             <Route path="WorkshopsSc" element={<WorkshopsSc /> } />
             <Route path="CreateWorkshops" element={<CreateWorkshops /> } /> 

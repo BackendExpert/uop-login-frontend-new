@@ -108,6 +108,12 @@ const sidemenu = [
         icon: FaGraduationCap,
         link: '/Dashboard/WorkshopsSc'
     },
+    {
+        id: 18,
+        name: "Publication",
+        icon: FaGraduationCap,
+        link: '/Dashboard/Publication'
+    },
 ]
 
 export { sidemenu }
