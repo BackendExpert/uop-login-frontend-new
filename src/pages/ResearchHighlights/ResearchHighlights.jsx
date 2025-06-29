@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BsJournalBookmarkFill } from 'react-icons/bs';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ResearchHighlights = () => {
     const [highlights, setHighlights] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(import.meta.env.VITE_APP_API + '/research.php', {
@@ -25,6 +27,10 @@ const ResearchHighlights = () => {
                 setLoading(false);
             });
     }, []);
+
+    const handleView = (id) => {
+        navigate(`/Dashboard/ResearchStats/${id}`);
+    };
 
     return (
         <div className='mt-4'>
@@ -61,15 +67,16 @@ const ResearchHighlights = () => {
                         <th>Awards & Recognitions</th>
                         <th>Workshops/Seminars</th>
                         <th>Capital Grants</th>
+                        <th>Options</th>
                     </tr>
                 </thead>
                 <tbody>
                     {loading ? (
-                        <tr><td colSpan="11" className="text-center py-4">Loading...</td></tr>
+                        <tr><td colSpan="12" className="text-center py-4">Loading...</td></tr>
                     ) : error ? (
-                        <tr><td colSpan="11" className="text-center py-4 text-red-500">{error}</td></tr>
+                        <tr><td colSpan="12" className="text-center py-4 text-red-500">{error}</td></tr>
                     ) : highlights.length === 0 ? (
-                        <tr><td colSpan="11" className="text-center py-4">No research highlights available</td></tr>
+                        <tr><td colSpan="12" className="text-center py-4">No research highlights available</td></tr>
                     ) : (
                         highlights.map((item, index) => (
                             <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : ''}>
@@ -84,6 +91,14 @@ const ResearchHighlights = () => {
                                 <td className='border px-3 py-2'>{item.research_awards_and_recognitions}</td>
                                 <td className='border px-3 py-2'>{item.annual_workshops_seminars}</td>
                                 <td className='border px-3 py-2'>{item.capital_grants_for_research}</td>
+                                <td className='border px-3 py-2'>
+                                    <button
+                                        onClick={() => handleView(item.id)}
+                                        className='bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 duration-300'
+                                    >
+                                        View
+                                    </button>
+                                </td>
                             </tr>
                         ))
                     )}
