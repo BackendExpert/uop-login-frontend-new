@@ -2,6 +2,7 @@ import { BsCalendar3EventFill, BsMegaphoneFill, BsNewspaper, BsJournalBookmarkFi
 import { FaImages, FaUser, FaUsers } from "react-icons/fa6";
 import { MdEventNote, MdMiscellaneousServices } from "react-icons/md";
 import { FaQuestionCircle, FaBook, FaMedal, FaGraduationCap } from "react-icons/fa";
+import { BsClipboardDataFill } from "react-icons/bs";
 
 
 
@@ -113,6 +114,12 @@ const sidemenu = [
         name: "Publication",
         icon: FaGraduationCap,
         link: '/Dashboard/Publication'
+    },
+    {
+        id: 19,
+        name: "Statistics",
+        icon: BsClipboardDataFill,
+        link: '/Dashboard/Statistics'
     },
 ]
 
