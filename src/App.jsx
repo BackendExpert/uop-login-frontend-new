@@ -56,6 +56,7 @@ import CreateWorkshops from "./pages/WorkshopsSc/CreateWorkshops";
 import Publication from "./pages/Publications/Publication";
 import CreateReports from "./pages/Publications/CreateReports";
 import ResearchStats from "./pages/ResearchHighlights/ResearchStats";
+import Staticties from "./pages/Staticties/Staticties";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -158,6 +159,8 @@ export default function App() {
 
             <Route path="WorkshopsSc" element={<WorkshopsSc /> } />
             <Route path="CreateWorkshops" element={<CreateWorkshops /> } /> 
+
+            <Route path="Statistics" element={<Staticties /> } /> 
           </Route>
          </Routes>
         {shouldShowFooter && <Footer />}
