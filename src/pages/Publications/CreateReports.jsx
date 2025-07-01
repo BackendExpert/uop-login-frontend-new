@@ -59,31 +59,6 @@ const CreateReports = () => {
         <div className="max-w-8xl mx-auto p-6">
             <div className="bg-white shadow-xl rounded-2xl p-6 space-y-6 border">
                 <h2 className="text-2xl font-bold text-gray-800">Add New Publication</h2>
-
-                <div>
-                    <label className="block text-sm font-medium text-gray-700">Publication Name</label>
-                    <input
-                        type="text"
-                        name="pub_name"
-                        value={formData.pub_name}
-                        onChange={handleChange}
-                        placeholder="Enter publication title"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-sm font-medium text-gray-700">Description</label>
-                    <textarea
-                        name="desc"
-                        value={formData.desc}
-                        onChange={handleChange}
-                        placeholder="Brief description"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
-                        rows={4}
-                    ></textarea>
-                </div>
-
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Year</label>
                     <input
@@ -110,8 +85,38 @@ const CreateReports = () => {
                         <option value="Newsletters">Newsletters</option>
                         <option value="Sustainability Reports">Sustainability Reports</option>
                         <option value="Statistical Handbooks">Statistical Handbooks</option>
+                        <option value="Digital Library">Digital Library</option>
+                        <option value="University Calendar">University Calendar</option>
+                        <option value="Centenary Development Plan">Centenary Development Plan</option>
+                        <option value="Action Plan">Action Plan</option>
                     </select>
                 </div>
+
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Publication Name</label>
+                    <input
+                        type="text"
+                        name="pub_name"
+                        value={formData.pub_name}
+                        onChange={handleChange}
+                        placeholder="Enter publication title"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea
+                        name="desc"
+                        value={formData.desc}
+                        onChange={handleChange}
+                        placeholder="Brief description"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
+                        rows={4}
+                    ></textarea>
+                </div>
+
+
 
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Upload File (PDF)</label>

@@ -44,6 +44,36 @@ const sidemenu = [
         link: '/Dashboard/Research'
     },
     {
+        id: 16,
+        name: "Research Highlights",
+        icon: BsJournalBookmarkFill,
+        link: '/Dashboard/ResearchHighlights'
+    },
+    {
+        id: 10,
+        name: "Diploma",
+        icon: FaBook,
+        link: '/Dashboard/Diploma'
+    },
+    {
+        id: 11,
+        name: "Certificates",
+        icon: FaMedal,
+        link: '/Dashboard/Certificates'
+    },
+    {
+        id: 18,
+        name: "Publication",
+        icon: FaGraduationCap,
+        link: '/Dashboard/Publication'
+    },
+    {
+        id: 19,
+        name: "Statistics",
+        icon: BsClipboardDataFill,
+        link: '/Dashboard/Statistics'
+    },
+    {
         id: 7,
         name: "Home Image Management",
         icon: FaImages,
@@ -61,18 +91,7 @@ const sidemenu = [
         icon: FaQuestionCircle,
         link: '/Dashboard/FAQ'
     },
-    {
-        id: 10,
-        name: "Diploma",
-        icon: FaBook,
-        link: '/Dashboard/Diploma'
-    },
-    {
-        id: 11,
-        name: "Certificates",
-        icon: FaMedal,
-        link: '/Dashboard/Certificates'
-    },
+
     {
         id: 12,
         name: "Societies",
@@ -85,41 +104,26 @@ const sidemenu = [
         icon: MdMiscellaneousServices,
         link: '/Dashboard/ServicesQuicklinks'
     },
-    {
-        id: 14,
-        name: "Profile",
-        icon: FaUser,
-        link: '/Dashboard/Profile'
-    },
+
     {
         id: 15,
         name: "Vacancies",
         icon: BsBagFill,
         link: '/Dashboard/Vacancies'
     },
-    {
-        id: 16,
-        name: "Research Highlights",
-        icon: BsJournalBookmarkFill,
-        link: '/Dashboard/ResearchHighlights'
-    },
+
     {
         id: 17,
         name: "Workshops & Short Courses",
         icon: FaGraduationCap,
         link: '/Dashboard/WorkshopsSc'
     },
+
     {
-        id: 18,
-        name: "Publication",
-        icon: FaGraduationCap,
-        link: '/Dashboard/Publication'
-    },
-    {
-        id: 19,
-        name: "Statistics",
-        icon: BsClipboardDataFill,
-        link: '/Dashboard/Statistics'
+        id: 14,
+        name: "Profile",
+        icon: FaUser,
+        link: '/Dashboard/Profile'
     },
 ]
 
