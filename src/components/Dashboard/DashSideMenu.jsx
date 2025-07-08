@@ -1,4 +1,4 @@
-import { BsCalendar3EventFill, BsMegaphoneFill, BsNewspaper, BsJournalBookmarkFill, BsFillGrid1X2Fill, BsPeopleFill, BsBagFill } from "react-icons/bs";
+import { BsCalendar3EventFill, BsMegaphoneFill, BsNewspaper, BsJournalBookmarkFill, BsFillGrid1X2Fill, BsPeopleFill, BsBagFill, BsCameraVideo } from "react-icons/bs";
 import { FaImages, FaUser, FaUsers } from "react-icons/fa6";
 import { MdEventNote, MdMiscellaneousServices } from "react-icons/md";
 import { FaQuestionCircle, FaBook, FaMedal, FaGraduationCap } from "react-icons/fa";
@@ -72,6 +72,12 @@ const sidemenu = [
         name: "Statistics",
         icon: BsClipboardDataFill,
         link: '/Dashboard/Statistics'
+    },
+    {
+        id: 20,
+        name: "Vidoes",
+        icon: BsCameraVideo,
+        link: '/Dashboard/Videos'
     },
     {
         id: 7,

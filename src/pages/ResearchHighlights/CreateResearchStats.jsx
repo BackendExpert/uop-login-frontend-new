@@ -11,34 +11,27 @@ const CreateResearchStats = () => {
     const RoleUser = secureLocalStorage.getItem("role");
 
     const [data, setData] = useState({
-        action: 'createResearchStats',
+        action: 'createResearchHeightlight',
         year: '',
-        research_journals: '',
-        research_publications: '',
-        citations: '',
-        research_ranking: '',
-        number_of_researchers_top2_percent: '',
-        annual_research_conferences: '',
-        annual_research_collaborations: '',
-        research_awards_and_recognitions: '',
-        annual_workshops_seminars: '',
-        capital_grants_for_research: ''
+        column_title: '',
+        data_column: '',
+        is_active: 1,
     });
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         setData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: type === 'checkbox' ? (checked ? 1 : 0) : value
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Basic validation for required fields
-        if (!data.year) {
-            alert("Year is required");
+        // Basic validation
+        if (!data.year || !data.column_title || !data.data_column) {
+            alert("Year, Column Title, and Data Column are required");
             return;
         }
 
@@ -53,7 +46,7 @@ const CreateResearchStats = () => {
             );
 
             if (res.data.Status === "Success") {
-                alert("Research statistics added successfully");
+                alert("Research highlight added successfully");
                 navigate('/Dashboard/ResearchHighlights');
             } else {
                 alert(res.data.error || "Failed to add data");
@@ -70,7 +63,7 @@ const CreateResearchStats = () => {
                     <div className="inline-block p-2 bg-[#065606] rounded">
                         <FaFlask className='h-6 w-auto fill-white' />
                     </div>
-                    <h1 className="text-[#065606] text-xl font-semibold uppercase">Add Research Statistics</h1>
+                    <h1 className="text-[#065606] text-xl font-semibold uppercase">Add Research Highlight</h1>
                 </div>
 
                 <div className="mt-4">
@@ -87,98 +80,47 @@ const CreateResearchStats = () => {
                         <DefultInput
                             label="Year *"
                             name="year"
-                            type="number"
-                            min="1900"
-                            max="2099"
+                            type="text"
                             value={data.year}
                             onChange={handleInputChange}
                             placeholder="Enter year"
                             required
                         />
+
                         <DefultInput
-                            label="Research Journals"
-                            name="research_journals"
-                            type="number"
-                            value={data.research_journals}
+                            label="Column Title *"
+                            name="column_title"
+                            type="text"
+                            value={data.column_title}
                             onChange={handleInputChange}
-                            placeholder="Research Journals"
-                        />
-                        <DefultInput
-                            label="Research Publications"
-                            name="research_publications"
-                            type="number"
-                            value={data.research_publications}
-                            onChange={handleInputChange}
-                            placeholder="Research Publications"
-                        />
-                        <DefultInput
-                            label="Citations"
-                            name="citations"
-                            type="number"
-                            value={data.citations}
-                            onChange={handleInputChange}
-                            placeholder="Citations"
-                        />
-                        <DefultInput
-                            label="Research Ranking"
-                            name="research_ranking"
-                            type="number"
-                            value={data.research_ranking}
-                            onChange={handleInputChange}
-                            placeholder="Research Ranking"
-                        />
-                        <DefultInput
-                            label="Researchers in Top 2% (2023)"
-                            name="number_of_researchers_top2_percent"
-                            type="number"
-                            value={data.number_of_researchers_top2_percent}
-                            onChange={handleInputChange}
-                            placeholder="Researchers in Top 2% (2023)"
-                        />
-                        <DefultInput
-                            label="Annual Research Conferences"
-                            name="annual_research_conferences"
-                            type="number"
-                            value={data.annual_research_conferences}
-                            onChange={handleInputChange}
-                            placeholder="Annual Research Conferences"
-                        />
-                        <DefultInput
-                            label="Annual Research Collaborations"
-                            name="annual_research_collaborations"
-                            type="number"
-                            value={data.annual_research_collaborations}
-                            onChange={handleInputChange}
-                            placeholder="Annual Research Collaboration"
-                        />
-                        <DefultInput
-                            label="Research Awards and Recognitions"
-                            name="research_awards_and_recognitions"
-                            type="number"
-                            value={data.research_awards_and_recognitions}
-                            onChange={handleInputChange}
-                            placeholder="Research Awards and Recognitions"
-                        />
-                        <DefultInput
-                            label="Annual Workshops/Seminars"
-                            name="annual_workshops_seminars"
-                            type="number"
-                            value={data.annual_workshops_seminars}
-                            onChange={handleInputChange}
-                            placeholder="Annual Workshops/Seminars"
-                        />
-                        <DefultInput
-                            label="Capital Grants for Research"
-                            name="capital_grants_for_research"
-                            type="number"
-                            step="0.01"
-                            value={data.capital_grants_for_research}
-                            onChange={handleInputChange}
-                            placeholder="Capital Grants for Research"
+                            placeholder="Column Title"
+                            required
                         />
 
+                        <DefultInput
+                            label="Data Column *"
+                            name="data_column"
+                            type="text"
+                            value={data.data_column}
+                            onChange={handleInputChange}
+                            placeholder="Data Column"
+                            required
+                        />
+
+                        <div className="flex items-center col-span-full">
+                            <input
+                                type="checkbox"
+                                id="is_active"
+                                name="is_active"
+                                checked={!!data.is_active}
+                                onChange={handleInputChange}
+                                className="mr-2"
+                            />
+                            <label htmlFor="is_active">Is Active</label>
+                        </div>
+
                         <div className="col-span-full flex justify-end">
-                            <Defaultbtn type="submit" btnvalue="Add Research Stats" />
+                            <Defaultbtn type="submit" btnvalue="Add Research Highlight" />
                         </div>
                     </form>
                 </div>

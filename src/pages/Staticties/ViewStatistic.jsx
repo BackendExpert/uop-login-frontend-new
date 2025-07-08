@@ -9,17 +9,19 @@ const ViewStatistic = () => {
     const [formData, setFormData] = useState({
         title: '',
         countData: '',
-        visibale: 0
+        visibale: 0,
+        icon: ''
     })
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
     // Fetch statistic by ID
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_APP_API}/statistics.php`, {
-            params: { action: 'getStatisticById', id }
-        })
-            .then(res => {
+        axios
+            .get(`${import.meta.env.VITE_APP_API}/statistics.php`, {
+                params: { action: 'getStatisticById', id }
+            })
+            .then((res) => {
                 if (res.data.Status === 'Success') {
                     setFormData(res.data.Result)
                 } else {
@@ -35,7 +37,11 @@ const ViewStatistic = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target
-        setFormData(prev => ({ ...prev, [name]: value }))
+        // Convert visibale to number to avoid string issues
+        setFormData((prev) => ({
+            ...prev,
+            [name]: name === 'visibale' ? Number(value) : value
+        }))
     }
 
     const handleSubmit = (e) => {
@@ -46,9 +52,11 @@ const ViewStatistic = () => {
         postData.append('title', formData.title)
         postData.append('countData', formData.countData)
         postData.append('visibale', formData.visibale)
+        postData.append('icon', formData.icon)
 
-        axios.post(`${import.meta.env.VITE_APP_API}/statistics.php`, postData)
-            .then(res => {
+        axios
+            .post(`${import.meta.env.VITE_APP_API}/statistics.php`, postData)
+            .then((res) => {
                 if (res.data.Status === 'Success') {
                     alert('Statistic updated successfully!')
                     navigate('/Dashboard/Statistics') // adjust as needed
@@ -75,7 +83,7 @@ const ViewStatistic = () => {
                         onChange={handleChange}
                         className="w-full border px-3 py-2 rounded focus:outline-none focus:ring"
                         required
-                        maxLength={45}
+                        maxLength={100} // updated per DB varchar(100)
                     />
                 </div>
                 <div>
@@ -88,6 +96,18 @@ const ViewStatistic = () => {
                         className="w-full border px-3 py-2 rounded focus:outline-none focus:ring"
                         required
                         maxLength={45}
+                    />
+                </div>
+                <div>
+                    <label className="block mb-1 font-medium">Icon</label>
+                    <input
+                        type="text"
+                        name="icon"
+                        value={formData.icon}
+                        onChange={handleChange}
+                        className="w-full border px-3 py-2 rounded focus:outline-none focus:ring"
+                        maxLength={45}
+                        placeholder="e.g., BsGraphUp"
                     />
                 </div>
                 <div>

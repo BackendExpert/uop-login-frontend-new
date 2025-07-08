@@ -7,16 +7,9 @@ const ResearchStats = () => {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         year: '',
-        research_journals: '',
-        research_publications: '',
-        citations: '',
-        research_ranking: '',
-        number_of_researchers_top2_percent: '',
-        annual_research_conferences: '',
-        annual_research_collaborations: '',
-        research_awards_and_recognitions: '',
-        annual_workshops_seminars: '',
-        capital_grants_for_research: ''
+        column_title: '',
+        data_column: '',
+        is_active: 1,
     })
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -24,7 +17,7 @@ const ResearchStats = () => {
     // Fetch data by ID
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_APP_API}/research.php`, {
-            params: { action: "getResearchStatsById", id }
+            params: { action: "getResearchHeightlightById", id }
         })
             .then(res => {
                 if (res.data.Status === "Success") {
@@ -42,15 +35,18 @@ const ResearchStats = () => {
 
     // Handle form field changes
     const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData(prev => ({ ...prev, [name]: value }))
+        const { name, value, type, checked } = e.target
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? (checked ? 1 : 0) : value
+        }))
     }
 
     // Submit update
     const handleSubmit = (e) => {
         e.preventDefault()
         const postData = new FormData()
-        postData.append('action', 'updateResearchStats')
+        postData.append('action', 'updateResearchHeightlight')
         postData.append('id', id)
         for (let key in formData) {
             postData.append(key, formData[key])
@@ -59,7 +55,7 @@ const ResearchStats = () => {
         axios.post(`${import.meta.env.VITE_APP_API}/research.php`, postData)
             .then(res => {
                 if (res.data.Status === "Success") {
-                    alert("Research stats updated successfully!")
+                    alert("Research highlight updated successfully!")
                     navigate("/Dashboard/ResearchHighlights")
                 } else {
                     alert(res.data.error || "Update failed")
@@ -74,27 +70,69 @@ const ResearchStats = () => {
     return (
         <div className="max-w-3xl mx-auto p-4 bg-white shadow rounded mt-8">
             <h1 className="text-2xl font-bold mb-4">
-                Update Research Stats for Year {formData.year}
+                Update Research Highlight for Year {formData.year}
             </h1>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {Object.keys(formData).map((field, index) => (
-                    <div key={index}>
-                        <label className="block text-sm font-medium capitalize mb-1">
-                            {field.replace(/_/g, ' ')}
-                        </label>
-                        <input
-                            type={field === 'capital_grants_for_research' ? "number" : "number"}
-                            step={field === 'capital_grants_for_research' ? "0.01" : "1"}
-                            name={field}
-                            value={formData[field] || ''}
-                            onChange={handleChange}
-                            className="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300"
-                            required={field === 'year'}
-                        />
-                    </div>
-                ))}
+
+                <div>
+                    <label className="block text-sm font-medium capitalize mb-1">
+                        Year *
+                    </label>
+                    <input
+                        type="text"
+                        name="year"
+                        value={formData.year ?? ''}
+                        onChange={handleChange}
+                        className="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300"
+                        required
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium capitalize mb-1">
+                        Column Title *
+                    </label>
+                    <input
+                        type="text"
+                        name="column_title"
+                        value={formData.column_title ?? ''}
+                        onChange={handleChange}
+                        className="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300"
+                        required
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium capitalize mb-1">
+                        Data Column *
+                    </label>
+                    <input
+                        type="text"
+                        name="data_column"
+                        value={formData.data_column ?? ''}
+                        onChange={handleChange}
+                        className="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300"
+                        required
+                    />
+                </div>
+
+                <div className="flex items-center">
+                    <input
+                        type="checkbox"
+                        id="is_active"
+                        name="is_active"
+                        checked={!!formData.is_active}
+                        onChange={handleChange}
+                        className="mr-2"
+                    />
+                    <label htmlFor="is_active" className="select-none">Is Active</label>
+                </div>
+
                 <div className="md:col-span-2 flex justify-end">
-                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">
+                    <button
+                        type="submit"
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded"
+                    >
                         Update
                     </button>
                 </div>

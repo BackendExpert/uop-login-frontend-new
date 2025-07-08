@@ -59,6 +59,8 @@ import ResearchStats from "./pages/ResearchHighlights/ResearchStats";
 import Staticties from "./pages/Staticties/Staticties";
 import CreateStatistics from "./pages/Staticties/CreateStatistics";
 import ViewStatistic from "./pages/Staticties/ViewStatistic";
+import VIdeos from "./pages/VIdeos/VIdeos";
+import CreateVideo from "./pages/VIdeos/CreateVideo";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -166,7 +168,8 @@ export default function App() {
             <Route path="CreateStatistics" element={<CreateStatistics /> } />
             <Route path="ViewStatistic/:id" element={<ViewStatistic /> } />
 
-            
+            <Route path="Videos" element={<VIdeos />} />
+            <Route path="CreateVideo" element={<CreateVideo />} />
           </Route>
          </Routes>
         {shouldShowFooter && <Footer />}
