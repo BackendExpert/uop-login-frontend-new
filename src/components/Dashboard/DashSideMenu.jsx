@@ -50,6 +50,12 @@ const sidemenu = [
         link: '/Dashboard/ResearchHighlights'
     },
     {
+        id: 21,
+        name: "iPURSE",
+        icon: BsJournalBookmarkFill,
+        link: '/Dashboard/Ipurse'
+    },
+    {
         id: 10,
         name: "Diploma",
         icon: FaBook,
@@ -79,6 +85,7 @@ const sidemenu = [
         icon: BsCameraVideo,
         link: '/Dashboard/Videos'
     },
+
     {
         id: 7,
         name: "Home Image Management",
