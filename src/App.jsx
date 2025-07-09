@@ -62,6 +62,7 @@ import ViewStatistic from "./pages/Staticties/ViewStatistic";
 import VIdeos from "./pages/VIdeos/VIdeos";
 import CreateVideo from "./pages/VIdeos/CreateVideo";
 import Ipurse from "./pages/Ipurse/Ipurse";
+import CreaeteIpurse from "./pages/Ipurse/CreaeteIpurse";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -161,7 +162,7 @@ export default function App() {
             <Route path="CreateResearchStats" element={<CreateResearchStats /> } />
 
             <Route path="Ipurse" element={<Ipurse /> } />
-
+            <Route path="CreaeteIpurse" element={<CreaeteIpurse /> } />
 
             <Route path="Publication" element={<Publication /> } />
             <Route path="CreateReports" element={<CreateReports /> } />
