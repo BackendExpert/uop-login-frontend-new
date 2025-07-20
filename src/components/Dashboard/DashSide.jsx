@@ -91,7 +91,7 @@ const DashSide = () => {
             )
           }
           if (RoleUser === "user") {
-            if (menu.id !== 2 && menu.id !== 7 && menu.id !== 9 && menu.id !== 10 && menu.id !== 11 && menu.id !== 12 && menu.id !== 13 && menu.id !== 15 && menu.id !== 16 && menu.id !== 17 && menu.id !== 18) {
+            if (menu.id !== 2 && menu.id !== 7 && menu.id !== 9 && menu.id !== 10 && menu.id !== 11 && menu.id !== 12 && menu.id !== 13 && menu.id !== 15 && menu.id !== 16 && menu.id !== 17 && menu.id !== 18 && menu.id !== 19 && menu.id !== 20 && menu.id !== 21 && menu.id !== 22) {
               return (
                 <Link to={menu.link} key={menu.id}>
                   <div

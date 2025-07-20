@@ -63,6 +63,8 @@ import VIdeos from "./pages/VIdeos/VIdeos";
 import CreateVideo from "./pages/VIdeos/CreateVideo";
 import Ipurse from "./pages/Ipurse/Ipurse";
 import CreaeteIpurse from "./pages/Ipurse/CreaeteIpurse";
+import Rankings from "./pages/Rankings/Rankings";
+import CreateRankings from "./pages/Rankings/CreateRankings";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -157,9 +159,14 @@ export default function App() {
             <Route path="Vacancies" element={<Vacancies /> } />
             <Route path="CreateVacancies" element={<CreateVacancies /> } />
             <Route path="ViewVacancy/:id" element={<ViewVacancy /> } />
+
+
             <Route path="ResearchHighlights" element={<ResearchHighlights /> } /> 
             <Route path="ResearchStats/:id" element={<ResearchStats /> } />
             <Route path="CreateResearchStats" element={<CreateResearchStats /> } />
+
+            <Route path="Rankings" element={<Rankings /> } />
+            <Route path="CreateRankings" element={<CreateRankings /> } />
 
             <Route path="Ipurse" element={<Ipurse /> } />
             <Route path="CreaeteIpurse" element={<CreaeteIpurse /> } />

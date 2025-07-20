@@ -56,6 +56,12 @@ const sidemenu = [
         link: '/Dashboard/Ipurse'
     },
     {
+        id: 22,
+        name: "Rankings",
+        icon: BsJournalBookmarkFill,
+        link: '/Dashboard/Rankings'
+    },
+    {
         id: 10,
         name: "Diploma",
         icon: FaBook,
