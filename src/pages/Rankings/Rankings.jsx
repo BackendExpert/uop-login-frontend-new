@@ -28,6 +28,10 @@ const Rankings = () => {
         fetchRankings();
     }, []);
 
+    const formatRank = (island, asian, world) => {
+        return `${island || '-'} / ${asian || '-'} / ${world || '-'}`;
+    };
+
     return (
         <div className="mt-6 px-4 max-w-7xl mx-auto font-sans">
             {/* Header */}
@@ -66,34 +70,24 @@ const Rankings = () => {
                         <thead className="bg-gray-50 text-gray-600 font-semibold text-left">
                             <tr>
                                 <th className="px-4 py-3">Year</th>
-                                <th className="px-4 py-3">Island Rank</th>
-                                <th className="px-4 py-3">Asian Rank</th>
-                                <th className="px-4 py-3">World Rank</th>
-                                <th className="px-4 py-3">Times Higher Education University</th>
-                                <th className="px-4 py-3">Times Higher Education Impact</th>
-                                <th className="px-4 py-3">U.S. News & World Report University</th>
-                                <th className="px-4 py-3">QS University</th>
-                                <th className="px-4 py-3">Webometrics Ranking</th>
-                                <th className="px-4 py-3">UI GreenMetric University</th>
+                                <th className="px-4 py-3">THE University</th>
+                                <th className="px-4 py-3">THE Impact</th>
+                                <th className="px-4 py-3">U.S. News</th>
+                                <th className="px-4 py-3">QS</th>
+                                <th className="px-4 py-3">Webometrics</th>
+                                <th className="px-4 py-3">UI GreenMetric</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
                             {rankings.map((r) => (
-                                <tr
-                                    key={r.id}
-                                    className="hover:bg-orange-50 transition"
-                                >
-                                    <td className="px-4 py-3">{r.year || '-'}</td>
-                                    <td className="px-4 py-3">{r.island || '-'}</td>
-                                    <td className="px-4 py-3">{r.asian || '-'}</td>
-                                    <td className="px-4 py-3">{r.world || '-'}</td>
-                                    <td className="px-4 py-3">{r.theur || '-'}</td>
-                                    <td className="px-4 py-3">{r.their || '-'}</td>
-                                    <td className="px-4 py-3">{r.usnw || '-'}</td>
-                                    <td className="px-4 py-3">{r.qsur || '-'}</td>
-                                    <td className="px-4 py-3">{r.wrwu || '-'}</td>
-                                    <td className="px-4 py-3">{r.uig || '-'}</td>
-                                    
+                                <tr key={r.id} className="hover:bg-orange-50 transition">
+                                    <td className="px-4 py-3 font-semibold text-gray-700">{r.year || '-'}</td>
+                                    <td className="px-4 py-3">{formatRank(r.theur_islandrank, r.theur_asianrank, r.theur_worldrank)}</td>
+                                    <td className="px-4 py-3">{formatRank(r.their_islandrank, r.their_asianrank, r.their_worldrank)}</td>
+                                    <td className="px-4 py-3">{formatRank(r.usnw_islandrank, r.usnw_asianrank, r.usnw_worldrank)}</td>
+                                    <td className="px-4 py-3">{formatRank(r.qsur_islandrank, r.qsur_asianrank, r.qsur_worldrank)}</td>
+                                    <td className="px-4 py-3">{formatRank(r.wrwu_islandrank, r.wrwu_asianrank, r.wrwu_worldrank)}</td>
+                                    <td className="px-4 py-3">{formatRank(r.uig_islandrank, r.uig_asianrank, r.uig_worldrank)}</td>
                                 </tr>
                             ))}
                         </tbody>
