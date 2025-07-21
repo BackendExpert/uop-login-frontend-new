@@ -1,7 +1,7 @@
 import { BsCalendar3EventFill, BsMegaphoneFill, BsNewspaper, BsJournalBookmarkFill, BsFillGrid1X2Fill, BsPeopleFill, BsBagFill, BsCameraVideo } from "react-icons/bs";
 import { FaImages, FaUser, FaUsers } from "react-icons/fa6";
 import { MdEventNote, MdMiscellaneousServices } from "react-icons/md";
-import { FaQuestionCircle, FaBook, FaMedal, FaGraduationCap } from "react-icons/fa";
+import { FaQuestionCircle, FaBook, FaMedal, FaGraduationCap, FaUserGraduate  } from "react-icons/fa";
 import { BsClipboardDataFill } from "react-icons/bs";
 
 
@@ -60,6 +60,12 @@ const sidemenu = [
         name: "Rankings",
         icon: BsJournalBookmarkFill,
         link: '/Dashboard/Rankings'
+    },
+    {
+        id: 23,
+        name: "Convocation",
+        icon: FaUserGraduate,
+        link: '/Dashboard/Convocation'
     },
     {
         id: 10,

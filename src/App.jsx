@@ -65,6 +65,8 @@ import Ipurse from "./pages/Ipurse/Ipurse";
 import CreaeteIpurse from "./pages/Ipurse/CreaeteIpurse";
 import Rankings from "./pages/Rankings/Rankings";
 import CreateRankings from "./pages/Rankings/CreateRankings";
+import Convocation from "./pages/Convocation/Convocation";
+import CreateConvocation from "./pages/Convocation/CreateConvocation";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -167,6 +169,9 @@ export default function App() {
 
             <Route path="Rankings" element={<Rankings /> } />
             <Route path="CreateRankings" element={<CreateRankings /> } />
+
+            <Route path="Convocation" element={<Convocation /> } />
+            <Route path="CreateConvocation" element={<CreateConvocation /> } />
 
             <Route path="Ipurse" element={<Ipurse /> } />
             <Route path="CreaeteIpurse" element={<CreaeteIpurse /> } />
